@@ -35,31 +35,42 @@ let PLANE = UIColor(red:1, green:1, blue:1, alpha:0)
 
 /* Abstract Factory pattern to work */
 class BlockFactory{
-    func buildBlock(color c:UIColor) -> SCNNode {
-        let box:SCNNode = SCNNode(geometry: SCNBox(width: CGFloat(BOX_SIZE), height: CGFloat(BOX_SIZE), length: CGFloat(BOX_SIZE), chamferRadius: CGFloat(ROUNDNESS)))
-        box.geometry?.firstMaterial?.diffuse.contents = c
-        return box
-    }
+    let redBlock:SCNNode = SCNNode(geometry: SCNBox(width: CGFloat(BOX_SIZE), height: CGFloat(BOX_SIZE), length: CGFloat(BOX_SIZE), chamferRadius: CGFloat(ROUNDNESS)))
+    let pinkBlock:SCNNode = SCNNode(geometry: SCNBox(width: CGFloat(BOX_SIZE), height: CGFloat(BOX_SIZE), length: CGFloat(BOX_SIZE), chamferRadius: CGFloat(ROUNDNESS)))
+    let orangeBlock:SCNNode = SCNNode(geometry: SCNBox(width: CGFloat(BOX_SIZE), height: CGFloat(BOX_SIZE), length: CGFloat(BOX_SIZE), chamferRadius: CGFloat(ROUNDNESS)))
+    let yellowBlock:SCNNode = SCNNode(geometry: SCNBox(width: CGFloat(BOX_SIZE), height: CGFloat(BOX_SIZE), length: CGFloat(BOX_SIZE), chamferRadius: CGFloat(ROUNDNESS)))
+    let blueBlock:SCNNode = SCNNode(geometry: SCNBox(width: CGFloat(BOX_SIZE), height: CGFloat(BOX_SIZE), length: CGFloat(BOX_SIZE), chamferRadius: CGFloat(ROUNDNESS)))
+    let purpleBlock:SCNNode = SCNNode(geometry: SCNBox(width: CGFloat(BOX_SIZE), height: CGFloat(BOX_SIZE), length: CGFloat(BOX_SIZE), chamferRadius: CGFloat(ROUNDNESS)))
+    let grayBlock:SCNNode = SCNNode(geometry: SCNBox(width: CGFloat(BOX_SIZE), height: CGFloat(BOX_SIZE), length: CGFloat(BOX_SIZE), chamferRadius: CGFloat(ROUNDNESS)))
+    
+    
     func RedBlock() -> SCNNode {
-        return buildBlock(color: RED)
+        redBlock.geometry?.firstMaterial?.diffuse.contents = RED
+        return redBlock.clone()
     }
     func PinkBlock() -> SCNNode {
-        return buildBlock(color: PINK)
+        pinkBlock.geometry?.firstMaterial?.diffuse.contents = PINK
+        return pinkBlock.clone()
     }
     func OrangeBlock() -> SCNNode {
-        return buildBlock(color: ORANGE)
+        orangeBlock.geometry?.firstMaterial?.diffuse.contents = ORANGE
+        return orangeBlock.clone()
     }
     func YellowBlock() -> SCNNode {
-        return buildBlock(color: YELLOW)
+        yellowBlock.geometry?.firstMaterial?.diffuse.contents = YELLOW
+        return yellowBlock.clone()
     }
     func BlueBlock() -> SCNNode {
-        return buildBlock(color: BLUE)
+        blueBlock.geometry?.firstMaterial?.diffuse.contents = BLUE
+        return blueBlock.clone()
     }
     func PurpleBlock() -> SCNNode {
-        return buildBlock(color: PURPLE)
+        purpleBlock.geometry?.firstMaterial?.diffuse.contents = PURPLE
+        return purpleBlock.clone()
     }
     func GrayBlock() -> SCNNode {
-        return buildBlock(color: GRAY)
+        grayBlock.geometry?.firstMaterial?.diffuse.contents = GRAY
+        return grayBlock.clone()
     }
 }
 

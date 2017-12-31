@@ -95,6 +95,7 @@ class TetrisModel {
                 self.current!.top -= 1
             }
             else if(result == 3){
+                /*If the game is over, the lock needs to be released here, or else deadlock will happen on the next game*/
                 self.lock.unlock()
                 self.view.distroy()
                 self.endGame()
@@ -141,13 +142,22 @@ class TetrisModel {
             self.timer.invalidate()
             self.timer = nil
         }
-        let button = UIButton(frame: CGRect(x: 10, y: 10, width: 100, height: 100))
-        button.backgroundColor = UIColor.white
+        let button = UIButton(frame: CGRect(x: 0, y: -80, width: UIScreen.main.bounds.width, height: 80))
+        button.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         button.addTarget(self, action: #selector(TetrisModel.playAgain), for: UIControlEvents.touchUpInside)
+        button.tag = 1
+        button.setTitle("Play Again?", for: UIControlState.normal)
         self.controller.view.addSubview(button)
+        UIView.animate(withDuration: 0.5, animations: {
+            button.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 80)
+        })
     }
     
     @objc func playAgain() -> Void {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.controller.view.viewWithTag(1)?.frame = CGRect(x: 0, y: -80, width: UIScreen.main.bounds.width, height: 80)
+        })
+        self.controller.view.viewWithTag(1)?.removeFromSuperview()
         self.view.clearWellView()
         self.clearWellModel()
         self.current = nil

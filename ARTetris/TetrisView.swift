@@ -98,21 +98,20 @@ class TetrisView {
         table.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
         
         table.geometry?.firstMaterial?.diffuse.contents = PLANE
-        table.geometry?.firstMaterial?.transparency = CGFloat(1)
         self.sceneView.scene.rootNode.addChildNode(table)
 
         
         for i in 0..<ROW{
             for j in 0..<COL{
-                let x = -Float((Int(arc4random_uniform(7)) - 1) * i) * 0.02
+                let x = -Float((Int(arc4random_uniform(6)) - 1) * i) * 0.01
                 //let y = -Float((Int(arc4random_uniform(2)) - 1) * i) * 0.01
-                let z = -Float((Int(arc4random_uniform(7)) - 1) * i) * 0.02
+                let z = -Float((Int(arc4random_uniform(6)) - 1) * i) * 0.01
                 
                 let direction = SCNVector3Make(x, 0, z)
                 let cell = well[i][j]
                 if(cell != nil){
                     cell!.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
-                    cell!.physicsBody!.angularDamping = 0.9
+                    cell!.physicsBody!.angularDamping = 0.5
                     cell!.physicsBody!.applyForce(direction, asImpulse: true)
                 }
             }
@@ -120,9 +119,16 @@ class TetrisView {
     }
     
     func clearWellView() -> Void {
-        self.current.removeAll()
-        self.well.removeAll()
-        self.well = Array(repeatElement(Array(repeatElement(nil, count: COL)), count: ROW))
+        let _ = self.current.map({ (node:SCNNode) -> SCNNode? in
+            node.removeFromParentNode()
+            return nil
+        })
+        for i in 0..<ROW{
+            for j in 0..<COL{
+                self.well[i][j]?.removeFromParentNode()
+                self.well[i][j] = nil
+            }
+        }
     }
     
     private func translateIntToColor(int:Int) -> SCNNode {
