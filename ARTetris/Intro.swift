@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Intro: UIViewController, UIScrollViewDelegate {
+class Intro: UIViewController {
 
     let screenWidth:CGFloat = UIScreen.main.bounds.width
     let screenHeight:CGFloat = UIScreen.main.bounds.height
