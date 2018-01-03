@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D08ECC21FFAF13A00CE2988 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D08ECC11FFAF13A00CE2988 /* Assets.xcassets */; };
 		6D1A30921FF82FDF005ACCBF /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A30911FF82FDF005ACCBF /* Intro.swift */; };
 		6D8D223E1FEF293900169176 /* TetrisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D223D1FEF293900169176 /* TetrisView.swift */; };
 		6D8D22401FEF2B8800169176 /* TetrisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D223F1FEF2B8800169176 /* TetrisModel.swift */; };
@@ -14,12 +15,12 @@
 		6DEB09381FEDCCA9008884E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEB09371FEDCCA9008884E5 /* AppDelegate.swift */; };
 		6DEB093C1FEDCCAA008884E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEB093B1FEDCCA9008884E5 /* ViewController.swift */; };
 		6DEB093F1FEDCCAA008884E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DEB093D1FEDCCAA008884E5 /* Main.storyboard */; };
-		6DEB09411FEDCCAA008884E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DEB09401FEDCCAA008884E5 /* Assets.xcassets */; };
 		6DEB09441FEDCCAA008884E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DEB09421FEDCCAA008884E5 /* LaunchScreen.storyboard */; };
 		6DEB094C1FEDCD44008884E5 /* TetrominoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEB094B1FEDCD44008884E5 /* TetrominoFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D08ECC11FFAF13A00CE2988 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		6D1A30911FF82FDF005ACCBF /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		6D8D223D1FEF293900169176 /* TetrisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisView.swift; sourceTree = "<group>"; };
 		6D8D223F1FEF2B8800169176 /* TetrisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisModel.swift; sourceTree = "<group>"; };
@@ -28,7 +29,6 @@
 		6DEB09371FEDCCA9008884E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DEB093B1FEDCCA9008884E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6DEB093E1FEDCCAA008884E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6DEB09401FEDCCAA008884E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DEB09431FEDCCAA008884E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DEB09451FEDCCAA008884E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DEB094B1FEDCD44008884E5 /* TetrominoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrominoFactory.swift; sourceTree = "<group>"; };
@@ -71,8 +71,8 @@
 				6D8D223F1FEF2B8800169176 /* TetrisModel.swift */,
 				6DEB094B1FEDCD44008884E5 /* TetrominoFactory.swift */,
 				6DD5F09B1FF051F700F4A8F8 /* BlockFactory.swift */,
+				6D08ECC11FFAF13A00CE2988 /* Assets.xcassets */,
 				6DEB093D1FEDCCAA008884E5 /* Main.storyboard */,
-				6DEB09401FEDCCAA008884E5 /* Assets.xcassets */,
 				6DEB09421FEDCCAA008884E5 /* LaunchScreen.storyboard */,
 				6DEB09451FEDCCAA008884E5 /* Info.plist */,
 			);
@@ -139,7 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DEB09441FEDCCAA008884E5 /* LaunchScreen.storyboard in Resources */,
-				6DEB09411FEDCCAA008884E5 /* Assets.xcassets in Resources */,
+				6D08ECC21FFAF13A00CE2988 /* Assets.xcassets in Resources */,
 				6DEB093F1FEDCCAA008884E5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

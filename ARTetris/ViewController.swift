@@ -16,10 +16,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var hasCompletedFirstPlaneDetection:Bool = false
     var View:TetrisView!
     var Model:TetrisModel!
-    let overlay:UIImageView = UIImageView(image: UIImage(named: "PlaneDetect"))
-
     let screenWidth:CGFloat = UIScreen.main.bounds.width
     let screenHeight:CGFloat = UIScreen.main.bounds.height
+    let overlay:UIImageView = UIImageView(image: UIImage(named: "PlaneDetect"))
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +29,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         overlay.alpha = 0.5
         self.view.addSubview(overlay)
         
+  
         // Set the view's delegate
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        //sceneView.showsStatistics = true
         
         // Create a new scene
         let scene = SCNScene()
@@ -47,6 +49,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let alert = UIAlertController(title: "Detecting Surface", message: "Aim device at a flat surface with good lighting while moving the device left and right slowly.", preferredStyle: UIAlertControllerStyle.alert)
+        let cancel=UIAlertAction(title: "Okay", style:UIAlertActionStyle.cancel, handler: nil)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+        
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()

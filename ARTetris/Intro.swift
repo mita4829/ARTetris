@@ -8,24 +8,52 @@
 
 import UIKit
 
-class Intro: UIViewController {
+class Intro: UIViewController, UIScrollViewDelegate {
 
+    let screenWidth:CGFloat = UIScreen.main.bounds.width
+    let screenHeight:CGFloat = UIScreen.main.bounds.height
   
     @IBOutlet weak var wallpaper: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIView.animate(withDuration: 1.0, animations: {
-            self.wallpaper.alpha = 1
-        })
+        self.animate()
+        
         // Do any additional setup after loading the view.
+        
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.setUpScrollView()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func setUpScrollView() -> Void {
+        /*Page dots*/
+        
+//        let scrollView:UIScrollView = UIScrollView(frame: self.view.bounds-60)
+//        scrollView.contentSize = CGSize(width: screenWidth*2, height: screenHeight)
+//        scrollView.isPagingEnabled = true
+//        
+//        let leftRight = UIImageView(image: UIImage(named: "leftright"))
+//        leftRight.frame = CGRect(x: screenWidth*1.5 - leftRight.frame.width/2, y: 20, width: leftRight.frame.width, height: leftRight.frame.height)
+//        let rotate = UIImageView(image: UIImage(named: "rotate"))
+//        
+//        rotate.frame = CGRect(x: screenWidth*1.5 - leftRight.frame.width/2, y: leftRight.frame.height+20, width: leftRight.frame.width, height: leftRight.frame.height)
+//        
+//        scrollView.addSubview(leftRight)
+//        scrollView.addSubview(rotate)
+//        self.view.addSubview(scrollView)
+    }
 
+    func animate() -> Void {
+        UIView.animate(withDuration: 1.0, animations: {
+            self.wallpaper.alpha = 1
+        })
+    }
     /*
     // MARK: - Navigation
 

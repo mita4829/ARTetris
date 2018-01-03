@@ -21,88 +21,97 @@
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="OGc-oC-RJ5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TwG-bN-sGH">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Controls" id="Imw-GM-CM3"/>
-                                </items>
-                            </navigationBar>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nhd-LN-Aei">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="rzV-kl-qTQ"/>
+                                    <constraint firstAttribute="height" constant="60" id="iFT-91-i2j"/>
                                 </constraints>
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Play">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="rzV-kl-qTQ"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="rzV-kl-qTQ"/>
-                                    </mask>
-                                </variation>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="1gV-hr-dz1"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="Pkn-gd-g2U"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="htr-Ye-oox">
+                                <rect key="frame" x="62" y="63" width="250" height="541"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftright" translatesAutoresizingMaskIntoConstraints="NO" id="TqT-ZY-9Ys">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to move block left or right" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRk-VI-M1T">
+                                        <rect key="frame" x="1.5" y="250" width="247" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rotate" translatesAutoresizingMaskIntoConstraints="NO" id="Zq5-jx-x0U">
+                                        <rect key="frame" x="0.0" y="270.5" width="250" height="250"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to rotate block" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIw-Px-BYR">
+                                        <rect key="frame" x="53.5" y="520.5" width="143" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TwG-bN-sGH">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="32"/>
+                                <items>
+                                    <navigationItem title="Controls" id="Imw-GM-CM3"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="OGc-oC-RJ5" firstAttribute="top" secondItem="5u6-BZ-B3G" secondAttribute="top" id="5iG-eg-3E2"/>
-                            <constraint firstItem="Nhd-LN-Aei" firstAttribute="leading" secondItem="2y0-oX-5AT" secondAttribute="leading" id="D35-t0-olo"/>
+                            <constraint firstItem="Nhd-LN-Aei" firstAttribute="trailing" secondItem="2y0-oX-5AT" secondAttribute="trailing" id="IIi-C7-UbJ"/>
+                            <constraint firstItem="Nhd-LN-Aei" firstAttribute="leading" secondItem="2y0-oX-5AT" secondAttribute="leading" id="KqO-Kt-jzI"/>
                             <constraint firstItem="OGc-oC-RJ5" firstAttribute="trailing" secondItem="2y0-oX-5AT" secondAttribute="trailing" id="VbT-a6-ZgB"/>
-                            <constraint firstItem="Nhd-LN-Aei" firstAttribute="trailing" secondItem="2y0-oX-5AT" secondAttribute="trailing" id="aG9-Rs-LA8"/>
-                            <constraint firstItem="Nhd-LN-Aei" firstAttribute="bottom" secondItem="2y0-oX-5AT" secondAttribute="bottom" id="jpf-3W-dpE"/>
                             <constraint firstItem="2y0-oX-5AT" firstAttribute="bottom" secondItem="OGc-oC-RJ5" secondAttribute="bottom" id="ndt-a3-r43"/>
+                            <constraint firstItem="htr-Ye-oox" firstAttribute="centerX" secondItem="5u6-BZ-B3G" secondAttribute="centerX" id="obN-Wp-GJQ"/>
                             <constraint firstItem="OGc-oC-RJ5" firstAttribute="leading" secondItem="2y0-oX-5AT" secondAttribute="leading" id="pDt-0K-uRD"/>
                             <constraint firstItem="TwG-bN-sGH" firstAttribute="leading" secondItem="2y0-oX-5AT" secondAttribute="leading" id="pK5-9D-Epe"/>
                             <constraint firstItem="TwG-bN-sGH" firstAttribute="trailing" secondItem="2y0-oX-5AT" secondAttribute="trailing" id="qHI-qb-0GH"/>
+                            <constraint firstItem="Nhd-LN-Aei" firstAttribute="bottom" secondItem="2y0-oX-5AT" secondAttribute="bottom" id="yF9-Hi-rGe"/>
                             <constraint firstItem="TwG-bN-sGH" firstAttribute="top" secondItem="5u6-BZ-B3G" secondAttribute="top" id="yWD-0C-COY">
                                 <variation key="heightClass=regular" constant="20"/>
                             </constraint>
+                            <constraint firstItem="htr-Ye-oox" firstAttribute="centerY" secondItem="5u6-BZ-B3G" secondAttribute="centerY" id="yn4-Tu-86w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2y0-oX-5AT"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Nhd-LN-Aei"/>
                             </mask>
-                            <mask key="constraints">
-                                <exclude reference="D35-t0-olo"/>
-                                <exclude reference="aG9-Rs-LA8"/>
-                                <exclude reference="jpf-3W-dpE"/>
-                            </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="subviews">
-                                <exclude reference="TwG-bN-sGH"/>
                                 <include reference="Nhd-LN-Aei"/>
+                                <exclude reference="TwG-bN-sGH"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="pK5-9D-Epe"/>
                                 <exclude reference="qHI-qb-0GH"/>
                                 <exclude reference="yWD-0C-COY"/>
-                                <include reference="D35-t0-olo"/>
-                                <include reference="aG9-Rs-LA8"/>
-                                <include reference="jpf-3W-dpE"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="ARTetris" id="iO6-7f-eWs"/>
+                    <navigationItem key="navigationItem" title="ARTetris" id="iO6-7f-eWs">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="3i7-U1-lZw"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="wallpaper" destination="OGc-oC-RJ5" id="zPI-lg-SoN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4S-ry-AY0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-404" y="31.934032983508249"/>
+            <point key="canvasLocation" x="-64.799999999999997" y="31.934032983508249"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -118,10 +127,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596" y="31.934032983508249"/>
+            <point key="canvasLocation" x="534" y="32"/>
         </scene>
     </scenes>
     <resources>
         <image name="Wallpaper" width="750" height="750"/>
+        <image name="leftright" width="250" height="250"/>
+        <image name="rotate" width="250" height="250"/>
     </resources>
 </document>
