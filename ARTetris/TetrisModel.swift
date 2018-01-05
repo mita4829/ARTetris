@@ -26,29 +26,35 @@ var TIME_DELTA:Double = 0.3
 
 class TetrisModel {
     var wellModel:[[Int]] = Array(repeatElement(Array(repeatElement(0, count: COL)), count: ROW))
-    var view:TetrisView
+    
     var factory:TetrominoFactory
     var current:Tetromino? = nil
     var direction:Int = M_DOWN
     var didRotation:Bool = false
-    var controller:UIViewController
+    /*controller and view needs to be weak to avoid a strong retention cycle*/
+    weak var view:TetrisView?
+    weak var controller:UIViewController?
     /*lock is used to syncronize threads that touches/mutates the direction variable. Super painful to debug when threads conflict*/
     var lock:NSLock = NSLock()
 
     var timer:Timer!
     
     init(view v:TetrisView, controller c:UIViewController) {
-        self.view = v
+        self.view! = v
         self.controller = c
         self.factory = TetrominoFactory()
     }
     
-
+    deinit {
+        self.view = nil
+        self.controller = nil
+    }
+    
     func startGame() -> Void {
         if(self.timer != nil){
             return
         }
-        self.view.draw_grid()
+        self.view!.draw_grid()
         /*The magic happens here?*/
         var sec:Int = 0
         timer = Timer.scheduledTimer(withTimeInterval:TIME_DELTA, repeats: true){ _ in
@@ -97,7 +103,7 @@ class TetrisModel {
             else if(result == 3){
                 /*If the game is over, the lock needs to be released here, or else deadlock will happen on the next game*/
                 self.lock.unlock()
-                self.view.distroy()
+                self.view!.distroy()
                 self.endGame()
                 return
             }
@@ -107,8 +113,8 @@ class TetrisModel {
             
             /*Move the tetromino down one. If a rotation happened, don't skip one down increment*/
             if(self.current != nil){
-                let _:[[Int]] = self.union(tetromino: self.current!)
-                self.view.draw(tetromino: self.current!)
+                //let _:[[Int]] = self.union(tetromino: self.current!)
+                self.view!.draw(tetromino: self.current!)
                 if(result != 7){
                     self.current!.top += 1
                 }
@@ -116,24 +122,19 @@ class TetrisModel {
                 if(clearableLine.count > 0){
                     self.clear(lines: clearableLine)
                 }
-                self.view.hard_draw(matrix: self.wellModel)
+                self.view!.hard_draw(matrix: self.wellModel)
             }
             
             //Move it down and reset didRotate
             self.didRotation = false
             self.direction = M_DOWN
             
+            /*deinit tetromino*/
+            self.current = nil
             /*Release lock*/
             self.lock.unlock()
             
             sec += 1
-//            if(sec > 90 && TIME_DELTA > 0.1){
-//                self.endGame()
-//                print("Speed up!")
-//                TIME_DELTA -= 0.1
-//                self.startGame()
-//                return
-//            }
         }
     }
     
@@ -147,7 +148,7 @@ class TetrisModel {
         button.addTarget(self, action: #selector(TetrisModel.playAgain), for: UIControlEvents.touchUpInside)
         button.tag = 1
         button.setTitle("Play Again?", for: UIControlState.normal)
-        self.controller.view.addSubview(button)
+        self.controller!.view.addSubview(button)
         UIView.animate(withDuration: 0.5, animations: {
             button.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 80)
         })
@@ -155,10 +156,10 @@ class TetrisModel {
     
     @objc func playAgain() -> Void {
         UIView.animate(withDuration: 0.5, animations: {
-            self.controller.view.viewWithTag(1)?.frame = CGRect(x: 0, y: -80, width: UIScreen.main.bounds.width, height: 80)
+            self.controller!.view.viewWithTag(1)?.frame = CGRect(x: 0, y: -80, width: UIScreen.main.bounds.width, height: 80)
         })
-        self.controller.view.viewWithTag(1)?.removeFromSuperview()
-        self.view.clearWellView()
+        self.controller!.view.viewWithTag(1)?.removeFromSuperview()
+        self.view!.clearWellView()
         self.clearWellModel()
         self.current = nil
         self.startGame()
@@ -209,7 +210,7 @@ class TetrisModel {
         /*Tetromino out of bounds*/
         if((matrixWidth + left > COL || left < 0) || (top+matrixHeight > ROW)){
             /*Cannot update view, return failure*/
-            print("Boundary error")
+            //print("Boundary error")
             return 2
         }
         
@@ -222,7 +223,7 @@ class TetrisModel {
         for i in top..<top+matrixHeight{
             for j in left..<left+matrixWidth{
                 if(i<ROW && j<COL && m[i-top][j-left] != 0 && self.wellModel[i][j] != 0){
-                    print("Collision conflict")
+                    //print("Collision conflict")
                     return 7
                 }
             }
@@ -231,7 +232,7 @@ class TetrisModel {
         
         if(d == M_RIGHT){
             if(left+matrixWidth+1 > COL){
-                print("Cannot right shift due to no more space")
+                //print("Cannot right shift due to no more space")
                 return 5
             }
             for i in top..<top+matrixHeight{
@@ -244,13 +245,13 @@ class TetrisModel {
             }
         }else if(d == M_LEFT){
             if(left-1 < 0){
-                print("Cannot left shift due to no more space")
+                //print("Cannot left shift due to no more space")
                 return 6
             }
             for i in top..<top+matrixHeight{
                 for j in left..<left+matrixWidth{
                     if(j-1>=0 && m[i-top][j-left] != 0 && self.wellModel[i][j-1] != 0){
-                        print("Cannot left shift due to conflict")
+                        //print("Cannot left shift due to conflict")
                         return 6
                     }
                 }
@@ -268,7 +269,7 @@ class TetrisModel {
                 for j in left..<left+matrixWidth{
                     if(i+1<ROW && m[i-top][j-left] != 0 && self.wellModel[i+1][j] != 0){
                         /*Update view. Tetromino cannot go further down*/
-                        print("Tetromino fitted onto another")
+                        //print("Tetromino fitted onto another")
                         return 4
                     }
                 }
@@ -278,11 +279,11 @@ class TetrisModel {
         /*Check if tetromino touches the floor*/
         if(matrixHeight + top == ROW){
             /*Communicate to view to update tetromino*/
-            print("Tetromino touched the ground accept")
+            //print("Tetromino touched the ground accept")
             return 1
         }
         
-        print("Pass")
+        //print("Pass")
         return 0
     }
     
@@ -316,7 +317,7 @@ class TetrisModel {
                 copy[i][j] = m[i-t.top][j-t.left] != 0 ? m[i-t.top][j-t.left] : copy[i][j]
             }
         }
-        printWell(well:copy)
+        //printWell(well:copy)
         return copy
     }
     
@@ -329,7 +330,7 @@ class TetrisModel {
                 self.wellModel[i][j] = m[i-t.top][j-t.left] != 0 ? m[i-t.top][j-t.left] : self.wellModel[i][j]
             }
         }
-        printWell(well:self.wellModel)
+        //printWell(well:self.wellModel)
         return
     }
     
