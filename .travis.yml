@@ -1,0 +1,10 @@
+language: swift
+matrix:
+  include:
+    - osx_image: xcode9.2
+xcode_project: ARTetris.xcodeproj
+xcode_scheme: ARTetrisTests
+xcode_sdk:
+  - iphonesimulator11.2
+  - iphonesimulator11.1
+  - iphonesimulator11.0
