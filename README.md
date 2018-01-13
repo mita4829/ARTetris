@@ -1,5 +1,6 @@
 ![Alt text](https://github.com/mita4829/ARTetris/blob/master/Header.jpg "ARTetris Logo")
-# ARTetris
+# ARTetris [![Build Status](https://travis-ci.org/mita4829/ARTetris.svg?branch=master)](https://travis-ci.org/mita4829/ARTetris)
+
 Augmented Reality iOS Tetris App made using Apple's ARKit and SceneKit inspired by exyte. 
 
 ## Requirements ##
