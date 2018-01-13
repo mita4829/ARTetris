@@ -32,29 +32,24 @@ class TetrisModel {
     var direction:Int = M_DOWN
     var didRotation:Bool = false
     /*controller and view needs to be weak to avoid a strong retention cycle*/
-    weak var view:TetrisView?
-    weak var controller:UIViewController?
+    var view:TetrisView!
+    var controller:UIViewController!
     /*lock is used to syncronize threads that touches/mutates the direction variable. Super painful to debug when threads conflict*/
     var lock:NSLock = NSLock()
 
     var timer:Timer!
     
     init(view v:TetrisView, controller c:UIViewController) {
-        self.view! = v
+        self.view = v
         self.controller = c
         self.factory = TetrominoFactory()
-    }
-    
-    deinit {
-        self.view = nil
-        self.controller = nil
     }
     
     func startGame() -> Void {
         if(self.timer != nil){
             return
         }
-        self.view!.draw_grid()
+        self.view.draw_grid()
         /*The magic happens here?*/
         var sec:Int = 0
         timer = Timer.scheduledTimer(withTimeInterval:TIME_DELTA, repeats: true){ _ in
@@ -103,7 +98,7 @@ class TetrisModel {
             else if(result == 3){
                 /*If the game is over, the lock needs to be released here, or else deadlock will happen on the next game*/
                 self.lock.unlock()
-                self.view!.distroy()
+                self.view.distroy()
                 self.endGame()
                 return
             }
@@ -114,7 +109,7 @@ class TetrisModel {
             /*Move the tetromino down one. If a rotation happened, don't skip one down increment*/
             if(self.current != nil){
                 //let _:[[Int]] = self.union(tetromino: self.current!)
-                self.view!.draw(tetromino: self.current!)
+                self.view.draw(tetromino: self.current!)
                 if(result != 7){
                     self.current!.top += 1
                 }
@@ -122,7 +117,7 @@ class TetrisModel {
                 if(clearableLine.count > 0){
                     self.clear(lines: clearableLine)
                 }
-                self.view!.hard_draw(matrix: self.wellModel)
+                self.view.hard_draw(matrix: self.wellModel)
             }
             
             //Move it down and reset didRotate
@@ -130,7 +125,7 @@ class TetrisModel {
             self.direction = M_DOWN
             
             /*deinit tetromino*/
-            self.current = nil
+            //self.current = nil
             /*Release lock*/
             self.lock.unlock()
             
@@ -159,7 +154,7 @@ class TetrisModel {
             self.controller!.view.viewWithTag(1)?.frame = CGRect(x: 0, y: -80, width: UIScreen.main.bounds.width, height: 80)
         })
         self.controller!.view.viewWithTag(1)?.removeFromSuperview()
-        self.view!.clearWellView()
+        self.view.clearWellView()
         self.clearWellModel()
         self.current = nil
         self.startGame()
@@ -204,8 +199,8 @@ class TetrisModel {
         let m:[[Int]] = t.matrix
         let matrixWidth:Int = t.width
         let matrixHeight:Int = t.height
-        let top:Int = t.top
-        let left:Int = t.left
+        let top:Int = t.top >= 0 ? t.top : 0
+        let left:Int = t.left >= 0 ? t.left : 0
         
         /*Tetromino out of bounds*/
         if((matrixWidth + left > COL || left < 0) || (top+matrixHeight > ROW)){

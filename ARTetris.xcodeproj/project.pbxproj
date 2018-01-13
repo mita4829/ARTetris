@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D08ECC21FFAF13A00CE2988 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D08ECC11FFAF13A00CE2988 /* Assets.xcassets */; };
 		6D1A30921FF82FDF005ACCBF /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A30911FF82FDF005ACCBF /* Intro.swift */; };
+		6D4B14F420099ECC00831D90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B14F320099ECC00831D90 /* Assets.xcassets */; };
 		6D8D223E1FEF293900169176 /* TetrisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D223D1FEF293900169176 /* TetrisView.swift */; };
 		6D8D22401FEF2B8800169176 /* TetrisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D223F1FEF2B8800169176 /* TetrisModel.swift */; };
 		6DD5F09C1FF051F700F4A8F8 /* BlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD5F09B1FF051F700F4A8F8 /* BlockFactory.swift */; };
@@ -20,8 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6D08ECC11FFAF13A00CE2988 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		6D1A30911FF82FDF005ACCBF /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
+		6D4B14F320099ECC00831D90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		6D8D223D1FEF293900169176 /* TetrisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisView.swift; sourceTree = "<group>"; };
 		6D8D223F1FEF2B8800169176 /* TetrisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisModel.swift; sourceTree = "<group>"; };
 		6DD5F09B1FF051F700F4A8F8 /* BlockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockFactory.swift; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 				6D8D223F1FEF2B8800169176 /* TetrisModel.swift */,
 				6DEB094B1FEDCD44008884E5 /* TetrominoFactory.swift */,
 				6DD5F09B1FF051F700F4A8F8 /* BlockFactory.swift */,
-				6D08ECC11FFAF13A00CE2988 /* Assets.xcassets */,
+				6D4B14F320099ECC00831D90 /* Assets.xcassets */,
 				6DEB093D1FEDCCAA008884E5 /* Main.storyboard */,
 				6DEB09421FEDCCAA008884E5 /* LaunchScreen.storyboard */,
 				6DEB09451FEDCCAA008884E5 /* Info.plist */,
@@ -139,7 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DEB09441FEDCCAA008884E5 /* LaunchScreen.storyboard in Resources */,
-				6D08ECC21FFAF13A00CE2988 /* Assets.xcassets in Resources */,
+				6D4B14F420099ECC00831D90 /* Assets.xcassets in Resources */,
 				6DEB093F1FEDCCAA008884E5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
