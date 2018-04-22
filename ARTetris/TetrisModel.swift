@@ -22,7 +22,7 @@ let M_RIGHT:Int = 3
  0.4: Hard
  0.3: Impossible to win...
  */
-var TIME_DELTA:Double = 0.3
+var TIME_DELTA:Double = 0.4
 
 class TetrisModel {
     var wellModel:[[Int]] = Array(repeatElement(Array(repeatElement(0, count: COL)), count: ROW))
@@ -38,6 +38,8 @@ class TetrisModel {
     var lock:NSLock = NSLock()
 
     var timer:Timer!
+    var score:Int = 0
+    
     
     init(view v:TetrisView, controller c:UIViewController) {
         self.view = v
@@ -116,6 +118,9 @@ class TetrisModel {
             }else{
                 if(clearableLine.count > 0){
                     self.clear(lines: clearableLine)
+                    self.score += 10*clearableLine.count
+                    let generator = UIImpactFeedbackGenerator(style: .heavy)
+                    generator.impactOccurred()
                 }
                 self.view.hard_draw(matrix: self.wellModel)
             }
@@ -142,11 +147,12 @@ class TetrisModel {
         button.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         button.addTarget(self, action: #selector(TetrisModel.playAgain), for: UIControlEvents.touchUpInside)
         button.tag = 1
-        button.setTitle("Play Again?", for: UIControlState.normal)
+        button.setTitle("Final score: \(self.score). Play Again?", for: UIControlState.normal)
         self.controller!.view.addSubview(button)
         UIView.animate(withDuration: 0.5, animations: {
             button.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 80)
         })
+        self.score = 0
     }
     
     @objc func playAgain() -> Void {
