@@ -22,7 +22,7 @@ let M_RIGHT:Int = 3
  0.4: Hard
  0.3: Impossible to win...
  */
-var TIME_DELTA:Double = 0.4
+var TIME_DELTA:Double = 0.5
 
 class TetrisModel {
     var wellModel:[[Int]] = Array(repeatElement(Array(repeatElement(0, count: COL)), count: ROW))

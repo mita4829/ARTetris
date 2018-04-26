@@ -11,8 +11,8 @@ import UIKit
 import SceneKit
 
 //Teteromino size
-let BOX_SIZE:Float = 0.05
-let ROUNDNESS:Float = 0.005 //Chamfer radius
+let BOX_SIZE:Float = 0.03
+let ROUNDNESS:Float = 0.003 //Chamfer radius
 //Colors for tetrominoes
 let PINK = UIColor(red:1.00, green:0.27, blue:0.67, alpha:1.0) //7
 let RED = UIColor(red:1.00, green:0.26, blue:0.29, alpha:1.0)  //1
